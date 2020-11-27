@@ -5,7 +5,8 @@ FLAGS = -std=c++11 -g
 LIBS  = -lsdlgl -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
 
 
-OBJ_FILES = main.o
+OBJ_FILES = main.o \
+			entities/tank.o
 
 
 clean:
