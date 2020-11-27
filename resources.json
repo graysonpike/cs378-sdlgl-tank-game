@@ -1,0 +1,23 @@
+{
+	"sprites": {
+	},
+
+	"textures": {
+		"sherman_hull": {
+			"filename": "sherman/hull.png"
+		},
+		"sherman_turret": {
+			"filename": "sherman/turret.png"
+		},
+		"sherman_barrel": {
+			"filename": "sherman/barrel.png"
+		}
+	},
+	
+	"fonts": {
+		"base_text": {
+			"filename": "Inconsolata/Inconsolata-Regular.ttf",
+			"size": 16
+		}
+	}
+}
