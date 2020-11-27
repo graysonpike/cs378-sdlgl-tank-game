@@ -1,0 +1,44 @@
+big gun sounds
+334 - used for sherman
+402
+485
+494
+497 - really big
+547
+851
+
+medium gun sounds
+268
+333
+565
+572
+985
+990
+
+small gun sounds
+304
+335 - has chain sound
+467
+503
+533
+
+
+explosion sounds
+507
+820
+
+reload sounds
+604
+629
+921
+
+echos
+394
+395
+425
+499
+557
+600
+636
+764
+966

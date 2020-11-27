@@ -25,5 +25,10 @@
 			"filename": "Inconsolata/Inconsolata-Regular.ttf",
 			"size": 16
 		}
+	},
+
+	"sounds": {
+		"sherman_fire": "sherman_fire.ogg",
+		"tiger_fire": "tiger_fire.ogg"
 	}
 }
