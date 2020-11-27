@@ -66,7 +66,7 @@ int main() {
     context.scene = new Scene(context.inputs, context.graphics);
 
     // Game entities
-    context.scene->add_entity(new Tank(context.scene, 200, 200));
+    context.scene->add_entity(new Tank(context.scene, 320, 280));
 
     // UI entities
     context.scene->add_entity(new FPS_Display(

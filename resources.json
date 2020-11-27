@@ -4,13 +4,19 @@
 
 	"textures": {
 		"sherman_hull": {
-			"filename": "sherman/hull.png"
+			"filename": "sherman/hull.png",
+			"offset_x": -31,
+			"offset_y": -60
 		},
 		"sherman_turret": {
-			"filename": "sherman/turret.png"
+			"filename": "sherman/turret.png",
+			"offset_x": -24,
+			"offset_y": -25
 		},
 		"sherman_barrel": {
-			"filename": "sherman/barrel.png"
+			"filename": "sherman/barrel.png",
+			"offset_x": -4,
+			"offset_y": -26
 		}
 	},
 	
