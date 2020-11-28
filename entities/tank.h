@@ -7,7 +7,29 @@
 #include <sdlgl/game/timer.h>
 #include <sdlgl/graphics/texture.h>
 
+
 class Tank : public PhysicalEntity {
+
+    enum DrivingState {
+        NOT_DRIVING,
+        FORWARD,
+        BACKWARD
+    };
+
+    enum TurningState {
+        NOT_TURNING,
+        LEFT,
+        RIGHT
+    };
+
+    static const float forward_driving_speed;
+    static const float stationary_turn_forward_speed;
+    static const float backward_driving_speed;
+    static const float turning_speed;
+    static const float turret_speed;
+    static const int gun_recoil_amount;
+    static const int turret_offset;
+    static const int barrel_offset;
 
     std::map<std::string, Texture> textures;
     Sound fire_sound;
@@ -15,12 +37,10 @@ class Tank : public PhysicalEntity {
     Timer recoil_timer = Timer(1.0f);
     float turret_angle = 0.0f;
     float hull_angle = 0.0f;
-    float driving_speed = 40.0f;
-    float turning_speed = 30.0f;
-    float turret_speed = 30.0f;
-    static const int gun_recoil_amount = 10;
-    static const int turret_offset = 0;
-    static const int barrel_offset = 40;
+    DrivingState driving_state = DrivingState::NOT_DRIVING;
+    TurningState turning_state = TurningState::NOT_TURNING;
+
+    void move();
 
 public:
 
@@ -28,7 +48,8 @@ public:
     void update();
     void render();
 
-    void drive(bool direction, bool turn_left, bool turn_right);
+    void drive(bool direction);
+    void turn(bool direction);
     void rotate_turret(bool direction);
     void fire();
 

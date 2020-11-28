@@ -1,0 +1,12 @@
+#ifndef SHERMAN_H
+#define SHERMAN_H
+
+#include "tank.h"
+
+
+class Sherman : public Tank {
+public:
+	Sherman(Scene *scene, float x, float y);
+};
+
+#endif

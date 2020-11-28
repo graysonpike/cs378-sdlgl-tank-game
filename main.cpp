@@ -10,7 +10,7 @@
 #include <sdlgl/ui/fps_display.h>
 #include <sdlgl/ui/entity_count.h>
 
-#include "entities/tank.h"
+#include "entities/player.h"
 
 
 #define KEY_TOGGLE_DEBUG_VISUALS SDL_SCANCODE_GRAVE // Tilde
@@ -66,7 +66,7 @@ int main() {
     context.scene = new Scene(context.inputs, context.graphics);
 
     // Game entities
-    context.scene->add_entity(new Tank(context.scene, 320, 280));
+    context.scene->add_entity(new Player(context.scene, 320, 280));
 
     // UI entities
     context.scene->add_entity(new FPS_Display(

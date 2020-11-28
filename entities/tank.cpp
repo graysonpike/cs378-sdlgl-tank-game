@@ -13,6 +13,16 @@ std::pair<int, int> rotate_vector(int magnitude, float angle) {
 }
 
 
+const float Tank::forward_driving_speed = 60.0f;
+const float Tank::stationary_turn_forward_speed = 15.0f;
+const float Tank::backward_driving_speed = 30.0f;
+const float Tank::turning_speed = 1.0f;
+const float Tank::turret_speed = 30.0f;
+const int Tank::gun_recoil_amount = 10;
+const int Tank::turret_offset = 0;
+const int Tank::barrel_offset = 40;
+
+
 Tank::Tank(Scene *scene, float x, float y) :
     PhysicalEntity(scene, x, y, 60, 114) {
 
@@ -26,7 +36,21 @@ Tank::Tank(Scene *scene, float x, float y) :
 }
 
 
-void Tank::drive(bool direction, bool turn_left, bool turn_right) {}
+void Tank::drive(bool direction) {
+    if (direction) {
+        driving_state = DrivingState::FORWARD;
+    } else {
+        driving_state = DrivingState::BACKWARD;
+    }
+}
+
+void Tank::turn(bool direction) {
+    if (direction) {
+        turning_state = TurningState::RIGHT;
+    } else {
+        turning_state = TurningState::LEFT;
+    }
+}
 
 void Tank::rotate_turret(bool direction) {
     turret_angle += turret_speed * (direction ? 1 : -1);
@@ -42,7 +66,47 @@ void Tank::fire() {
     fire_sound.play();
 }
 
-void Tank::update() {}
+void Tank::move() {
+    float speed = 0;
+    float turn_angle = 0;
+    float delta = scene->get_delta();
+    if (driving_state == DrivingState::FORWARD) {
+        if (turning_state == TurningState::RIGHT) {
+            turn_angle = turning_speed;
+        } else if (turning_state == TurningState::LEFT) {
+            turn_angle = -turning_speed;
+        }
+        speed = forward_driving_speed;
+    }
+    if (driving_state == DrivingState::BACKWARD) {
+        if (turning_state == TurningState::RIGHT) {
+            turn_angle = -turning_speed;
+        } else if (turning_state == TurningState::LEFT) {
+            turn_angle = turning_speed;
+        }
+        speed = -backward_driving_speed;
+    }
+    if (driving_state == DrivingState::NOT_DRIVING) {
+        if (turning_state == TurningState::RIGHT) {
+            turn_angle = turning_speed;
+        } else if (turning_state == TurningState::LEFT) {
+            turn_angle = -turning_speed;
+        }
+        if (turning_state != TurningState::NOT_TURNING) {
+            // Apply some forward speed when turning
+            speed = stationary_turn_forward_speed;
+        }
+    }
+    y += speed * sin(hull_angle - M_PI/2) * delta;
+    x += speed * cos(hull_angle - M_PI/2) * delta;
+    hull_angle += turn_angle * delta;
+}
+
+void Tank::update() {
+    move();
+    driving_state = DrivingState::NOT_DRIVING;
+    turning_state = TurningState::NOT_TURNING;
+}
 
 void Tank::render() {
 
