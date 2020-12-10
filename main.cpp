@@ -11,6 +11,7 @@
 #include <sdlgl/ui/entity_count.h>
 
 #include "entities/player.h"
+#include "entities/enemy.h"
 
 
 #define KEY_TOGGLE_DEBUG_VISUALS SDL_SCANCODE_GRAVE // Tilde
@@ -66,7 +67,8 @@ int main() {
     context.scene = new Scene(context.inputs, context.graphics);
 
     // Game entities
-    context.scene->add_entity(new Player(context.scene, 320, 280));
+    context.scene->add_entity(new Player(context.scene, 100, 280), 1);
+    context.scene->add_entity(new Enemy(context.scene, 500, 280));
 
     // UI entities
     context.scene->add_entity(new FPS_Display(

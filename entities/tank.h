@@ -10,6 +10,8 @@
 
 class Tank : public PhysicalEntity {
 
+protected:
+
     enum DrivingState {
         NOT_DRIVING,
         FORWARD,
@@ -26,10 +28,11 @@ class Tank : public PhysicalEntity {
     static const float stationary_turn_forward_speed;
     static const float backward_driving_speed;
     static const float turning_speed;
-    static const float turret_speed;
+    float turret_speed;
     static const int gun_recoil_amount;
     static const int turret_offset;
-    static const int barrel_offset;
+    static const int barrel_tip_offset;
+    int barrel_offset;
 
     std::map<std::string, Texture> textures;
     Sound fire_sound;
@@ -40,11 +43,13 @@ class Tank : public PhysicalEntity {
     DrivingState driving_state = DrivingState::NOT_DRIVING;
     TurningState turning_state = TurningState::NOT_TURNING;
 
+    virtual void load_resources() = 0;
+    std::pair<int, int> get_fire_endpoint();
     void move();
 
 public:
 
-    Tank(Scene *scene, float x, float y);
+    Tank(Scene *scene, float x, float y, int w, int h);
     void update();
     void render();
 

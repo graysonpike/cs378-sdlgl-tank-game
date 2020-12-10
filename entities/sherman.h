@@ -5,6 +5,9 @@
 
 
 class Sherman : public Tank {
+
+	void load_resources();
+
 public:
 	Sherman(Scene *scene, float x, float y);
 };

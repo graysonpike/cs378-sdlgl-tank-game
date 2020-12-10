@@ -8,7 +8,10 @@ LIBS  = -lsdlgl -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
 OBJ_FILES = main.o \
 			entities/tank.o \
 			entities/sherman.o \
-			entities/player.o
+			entities/tiger.o \
+			entities/player.o \
+			entities/enemy.o \
+			entities/fire_streak.o
 
 
 clean:

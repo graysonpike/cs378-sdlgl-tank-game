@@ -17,6 +17,21 @@
 			"filename": "sherman/barrel.png",
 			"offset_x": -4,
 			"offset_y": -26
+		},
+		"tiger_hull": {
+			"filename": "tiger/hull.png",
+			"offset_x": -42,
+			"offset_y": -72
+		},
+		"tiger_turret": {
+			"filename": "tiger/turret.png",
+			"offset_x": -30,
+			"offset_y": -40
+		},
+		"tiger_barrel": {
+			"filename": "tiger/barrel.png",
+			"offset_x": -6,
+			"offset_y": -48
 		}
 	},
 	
