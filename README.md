@@ -1,6 +1,10 @@
 # CS 378: Top Down Tank Game
 Grayson Pike, McCray Robertson, Jack Su
 
+
+[Video Trailer](https://drive.google.com/file/d/1YP4eQrjQx3UrjiTRJoWBWxoLTid3J4Jx/view)
+
+
 ### Game Design
 Our final project is a single player top-down arcade-style tank combat game. The player drives a tank around a map with an enemy (AI controlled) tank, and must shoot the enemy to destroy it. Particle effects are used to show explosions when firing the tank’s cannon or hitting the enemy tank.
 
