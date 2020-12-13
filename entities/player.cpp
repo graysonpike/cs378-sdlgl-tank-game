@@ -1,5 +1,6 @@
 #include "player.h"
 #include <iostream>
+#include "hit_counter.h"
 
 #define KEY_MOVE_FORWARD  SDL_SCANCODE_W
 #define KEY_MOVE_BACKWARD SDL_SCANCODE_S
@@ -10,7 +11,9 @@
 #define KEY_FIRE          SDL_SCANCODE_SPACE
 
 
-Player::Player(Scene *scene, float x, float y) : Sherman(scene, x, y) {}
+Player::Player(Scene *scene, float x, float y) : Sherman(scene, x, y) {
+    enemy = nullptr;
+}
 
 void Player::handle_inputs(Inputs *inputs) {
     if (inputs->is_key_down(KEY_MOVE_FORWARD)) {
@@ -34,7 +37,24 @@ void Player::handle_inputs(Inputs *inputs) {
 }
 
 
+void Player::fire() {
+    if (reload_timer.is_done()) {
+        std::pair<int, int> fire_endpoint = get_fire_endpoint();
+        if (enemy->get_hitbox()->check_point((SDL_Point){fire_endpoint.first, fire_endpoint.second})) {
+            std::vector<Entity*> players = scene->get_entities_of_type(3);
+            HitCounter *counter = static_cast<HitCounter*>(players[0]);
+            counter->increment();
+        }
+    }
+    Tank::fire();
+}
+
+
 void Player::update() {
+    if (enemy == nullptr) {
+        std::vector<Entity*> players = scene->get_entities_of_type(2);
+        enemy = static_cast<Enemy*>(players[0]);
+    }
     handle_inputs(scene->get_inputs());
     Sherman::update();
 }

@@ -14,6 +14,7 @@
 #include "entities/player.h"
 #include "entities/enemy.h"
 #include "entities/button.h"
+#include "entities/hit_counter.h"
 
 
 #define KEY_TOGGLE_DEBUG_VISUALS SDL_SCANCODE_GRAVE // Tilde
@@ -104,7 +105,7 @@ int main() {
 
     // Game entities
     context.scene->add_entity(new Player(context.scene, 100, 280), 1);
-    context.scene->add_entity(new Enemy(context.scene, 500, 280));
+    context.scene->add_entity(new Enemy(context.scene, 500, 280), 2);
 
     context.menu->add_entity(new Button(context.scene, 160, 68, "ui_logo"));
     context.menu->add_entity(new Button(context.scene, 213, 204, "ui_play"));
@@ -118,6 +119,8 @@ int main() {
         context.scene, "base_text", {0, 0, 0, 255}));
     context.scene->add_entity(new EntityCount(
         context.scene, "base_text", {0, 0, 0, 255}));
+    context.scene->add_entity(new HitCounter(
+        context.scene, "base_text", {0, 0, 0, 255}), 3);
 
     *context.loop = true;
     while (*context.loop) {

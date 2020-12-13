@@ -111,6 +111,7 @@ void Tank::update() {
     move();
     driving_state = DrivingState::NOT_DRIVING;
     turning_state = TurningState::NOT_TURNING;
+    hitbox.update_pos(x, y, 0);
 }
 
 void Tank::render() {
@@ -136,4 +137,9 @@ void Tank::render() {
         SDL_Rect box_rect = {(int)x-2, (int)y-2, 4, 4};
         SDL_RenderFillRect(renderer, &box_rect);
     }
+}
+
+
+Hitbox *Tank::get_hitbox() {
+    return &hitbox;
 }

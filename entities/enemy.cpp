@@ -5,7 +5,6 @@
 
 Enemy::Enemy(Scene *scene, float x, float y) : Tiger(scene, x, y) {
 	std::vector<Entity*> players = scene->get_entities_of_type(1);
-	std::cout << players.size() << std::endl;
 	player = static_cast<Player*>(players[0]);
 }
 

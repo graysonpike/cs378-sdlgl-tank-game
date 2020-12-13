@@ -4,6 +4,8 @@
 #include "tiger.h"
 #include "player.h"
 
+class Player;
+
 
 class Enemy : public Tiger {
 

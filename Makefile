@@ -12,7 +12,8 @@ OBJ_FILES = main.o \
 			entities/player.o \
 			entities/enemy.o \
 			entities/fire_streak.o \
-			entities/button.o
+			entities/button.o \
+			entities/hit_counter.o
 
 
 clean:

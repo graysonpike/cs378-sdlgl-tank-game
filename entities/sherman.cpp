@@ -4,6 +4,7 @@
 
 
 Sherman::Sherman(Scene *scene, float x, float y) : Tank(scene, x, y, 60, 114) {
+	hitbox = Hitbox(-30, -57, 60, 114);
 	load_resources();
 }
 

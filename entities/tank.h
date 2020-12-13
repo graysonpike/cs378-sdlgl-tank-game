@@ -5,6 +5,7 @@
 #include <sdlgl/game/scene.h>
 #include <sdlgl/game/physical_entity.h>
 #include <sdlgl/game/timer.h>
+#include <sdlgl/collision/hitbox.h>
 #include <sdlgl/graphics/texture.h>
 
 
@@ -42,6 +43,7 @@ protected:
     float hull_angle = 0.0f;
     DrivingState driving_state = DrivingState::NOT_DRIVING;
     TurningState turning_state = TurningState::NOT_TURNING;
+    Hitbox hitbox;
 
     virtual void load_resources() = 0;
     std::pair<int, int> get_fire_endpoint();
@@ -57,6 +59,8 @@ public:
     void turn(bool direction);
     void rotate_turret(bool direction);
     void fire();
+
+    Hitbox *get_hitbox();
 
 };
 
