@@ -1,6 +1,6 @@
 #include "sherman.h"
 
-#include "../util/math.h"
+#include <sdlgl/utilities/math.h>
 
 
 Sherman::Sherman(Scene *scene, float x, float y) : Tank(scene, x, y, 60, 114) {

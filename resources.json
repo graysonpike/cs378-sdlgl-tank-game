@@ -32,6 +32,18 @@
 			"filename": "tiger/barrel.png",
 			"offset_x": -6,
 			"offset_y": -48
+		},
+		"ui_logo": {
+			"filename": "ui/logo.png"
+		},
+		"ui_play": {
+			"filename": "ui/play.png"
+		},
+		"ui_exit": {
+			"filename": "ui/exit.png"
+		},
+		"ui_resume": {
+			"filename": "ui/resume.png"
 		}
 	},
 	

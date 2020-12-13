@@ -11,7 +11,8 @@ OBJ_FILES = main.o \
 			entities/tiger.o \
 			entities/player.o \
 			entities/enemy.o \
-			entities/fire_streak.o
+			entities/fire_streak.o \
+			entities/button.o
 
 
 clean:

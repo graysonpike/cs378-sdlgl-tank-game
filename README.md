@@ -38,6 +38,12 @@ During the course of this project, two major systems that we implemented were pa
 
 ![](screenshots/noise.png)
 
+Below, you can see the main menu and pause menu.
+
+![](screenshots/main_menu.png)
+
+![](screenshots/pause_menu.png)
+
 
 ### Responsibilities
 Grayson handled programming closely related to his game library. We pair programmed all together to implement the more complex features, like Perlin noise. McCray took lead on implementing Perlin noise and producing our trailer video, while Jack worked on our presentation and design outline.

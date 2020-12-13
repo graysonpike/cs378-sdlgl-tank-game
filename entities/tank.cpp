@@ -1,7 +1,7 @@
 #include <utility>
 #include <iostream>
 #include <sdlgl/graphics/resources.h>
-#include <sdlgl/graphics/effects/particles.h>
+#include <sdlgl/graphics/effects/linear_emitter.h>
 #include <sdlgl/utilities/math.h>
 
 #include "tank.h"
@@ -61,8 +61,8 @@ void Tank::fire() {
     explosion_colors.push_back({255, 168, 69});
     explosion_colors.push_back({255, 209, 69});
     std::pair<int, int> offset_vector = Math::rotate_vector(barrel_tip_offset, turret_angle);
-    scene->add_entity(new Particles(scene, x + offset_vector.first, y + offset_vector.second, -100, 100, -100, 100, explosion_colors, 50, 4, 0.3f, 0.1f, false));
-    scene->add_entity(new Particles(scene, fire_endpoint.first, fire_endpoint.second, -100, 100, -100, 100, explosion_colors, 50, 4, 0.3f, 0.1f, false));
+    scene->add_entity(new LinearParticleEmitter(scene, x + offset_vector.first, y + offset_vector.second, -100, 100, -100, 100, explosion_colors, 50, 4, 0.3f, 0.1f, false));
+    scene->add_entity(new LinearParticleEmitter(scene, fire_endpoint.first, fire_endpoint.second, -100, 100, -100, 100, explosion_colors, 50, 4, 0.3f, 0.1f, false));
 }
 
 std::pair<int, int> Tank::get_fire_endpoint() {
