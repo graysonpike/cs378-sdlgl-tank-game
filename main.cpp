@@ -25,6 +25,7 @@ struct Context {
     Scene *scene;
     Scene *menu;
     Scene *pause;
+    Scene *win;
     int *game_state;
     Inputs *inputs;
     Clock *clock;
@@ -75,6 +76,18 @@ void game_loop(struct Context context) {
         }
     }
 
+    else if (*context.game_state == 3) {
+        context.win->update(context.clock->get_delta());
+        context.win->render();
+        if (context.inputs->is_key_down_event(SDL_SCANCODE_RETURN)) {
+            *(context.game_state) = 0;
+        }
+        // If ESC or 'X' button is pressed, leave the update loop and exit
+        if (context.inputs->is_key_down_event(SDL_SCANCODE_Q)) {
+            *(context.game_state) = 0;
+        }
+    }
+
     context.graphics->present_renderer(context.clock->get_delta());
 
 }
@@ -102,6 +115,7 @@ int main() {
     context.scene = new Scene(context.inputs, context.graphics);
     context.menu = new Scene(context.inputs, context.graphics);
     context.pause = new Scene(context.inputs, context.graphics);
+    context.win = new Scene(context.inputs, context.graphics);
 
     // Game entities
     context.scene->add_entity(new Player(context.scene, 100, 280), 1);
@@ -114,17 +128,23 @@ int main() {
     context.pause->add_entity(new Button(context.scene, 213, 138, "ui_resume"));
     context.pause->add_entity(new Button(context.scene, 213, 274, "ui_exit"));
 
+    context.win->add_entity(new Button(context.scene, 0, 0, "ui_clear"));
+
     // UI entities
     context.scene->add_entity(new FPS_Display(
         context.scene, "base_text", {0, 0, 0, 255}));
     context.scene->add_entity(new EntityCount(
         context.scene, "base_text", {0, 0, 0, 255}));
-    context.scene->add_entity(new HitCounter(
-        context.scene, "base_text", {0, 0, 0, 255}), 3);
+    HitCounter *hit_counter = new HitCounter(context.scene, "base_text", {0, 0, 0, 255});
+    context.scene->add_entity(hit_counter, 3);
 
     *context.loop = true;
     while (*context.loop) {
+        if (*context.game_state == 1 && hit_counter->get_count() > 3) {
+            *context.game_state = 3;
+        }
         game_loop(context);
+
     }
 
     return 0;

@@ -15,9 +15,10 @@ class HitCounter : public Entity {
 	SDL_Color color;
 
 public:
-	
+
 	HitCounter(Scene *scene, std::string font, SDL_Color color);
 
+	int get_count();
 	void increment();
 	void update();
 	void render();

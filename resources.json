@@ -44,6 +44,9 @@
 		},
 		"ui_resume": {
 			"filename": "ui/resume.png"
+		},
+		"ui_clear": {
+			"filename": "ui/clear.png"
 		}
 	},
 	

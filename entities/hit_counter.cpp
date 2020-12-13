@@ -10,6 +10,10 @@ HitCounter::HitCounter(Scene *scene, std::string font, SDL_Color color)
     this->color = color;
 }
 
+int HitCounter::get_count() {
+    return hit_count;
+}
+
 void HitCounter::increment() {
     hit_count ++;
 }
