@@ -1,6 +1,7 @@
 #include "enemy.h"
 #include <iostream>
 #include "math.h"
+#include "hit_counter.h"
 
 
 Enemy::Enemy(Scene *scene, float x, float y) : Tiger(scene, x, y) {
@@ -45,7 +46,10 @@ void Enemy::handle_turret() {
 }
 
 void Enemy::handle_fire() {
-
+	std::pair<int, int> fire_endpoint = get_fire_endpoint();
+	if (player->get_hitbox()->check_point((SDL_Point){fire_endpoint.first, fire_endpoint.second})) {
+		fire();
+	}
 }
 
 
@@ -54,4 +58,14 @@ void Enemy::update() {
     handle_turret();
     handle_fire();
     Tiger::update();
+}
+
+
+void Enemy::fire() {
+	if (reload_timer.is_done()) {
+		std::vector<Entity*> players = scene->get_entities_of_type(4);
+        HitCounter *counter = static_cast<HitCounter*>(players[0]);
+        counter->increment();
+	}
+	Tank::fire();
 }

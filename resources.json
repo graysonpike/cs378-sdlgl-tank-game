@@ -47,6 +47,9 @@
 		},
 		"ui_clear": {
 			"filename": "ui/clear.png"
+		},
+		"ui_lose": {
+			"filename": "ui/lose.png"
 		}
 	},
 	

@@ -13,10 +13,12 @@ class HitCounter : public Entity {
 	int hit_count;
 	std::string font;
 	SDL_Color color;
+	std::string label;
+	int offset;
 
 public:
 
-	HitCounter(Scene *scene, std::string font, SDL_Color color);
+	HitCounter(Scene *scene, std::string font, SDL_Color color, std::string label, int offset);
 
 	int get_count();
 	void increment();

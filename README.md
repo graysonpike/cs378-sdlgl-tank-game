@@ -6,11 +6,17 @@ Grayson Pike, McCray Robertson, Jack Su
 
 
 ### Game Design
-Our final project is a single player top-down arcade-style tank combat game. The player drives a tank around a map with an enemy (AI controlled) tank, and must shoot the enemy to destroy it. Particle effects are used to show explosions when firing the tank’s cannon or hitting the enemy tank.
+Our final project is a single player top-down arcade-style tank combat game. The player drives a tank around a map with an enemy (AI controlled) tank, and must shoot the enemy to destroy it. Particle effects are used to show explosions when firing the tank’s cannon or hitting the enemy tank. A sound effect plays when the player shoots their cannon.
 
 ![](screenshots/gameplay.png)
 
 The player drives the tank with the WASD keys, and rotates the turret using the arrow keys. The tank drives realistically, with turning mechanics for forward and reverse driving. The space bar fires the gun, which takes 3 seconds to reload. The enemy tank will rotate its turret towards the player, and has a slow turret speed. This allows the player to avoid being hit with evasive driving.
+
+The player wins the game by landing three hits on the enemy tank. The player is presented with a win-screen and the option to quit or play again.
+
+Different forms of UI include the Main Menu, Pause Menu, and Win Screen. These are controlled by a `game_state` variable in the game context.
+
+The game also features a toggle for debug visuals (the tilde key).
 
 ### Technical Architecture
 Our game is written in C++ using SDLGL, which is a game library developed by Grayson. The library is written for performance and simplicity, and implements the following features:
@@ -42,7 +48,9 @@ Below, you can see the main menu and pause menu.
 
 ![](screenshots/main_menu.png)
 
-![](screenshots/pause_menu.png)
+![](screenshots/lose.png)
+
+![](screenshots/win.png)
 
 
 ### Responsibilities

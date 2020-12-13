@@ -18,6 +18,7 @@ class Enemy : public Tiger {
 public:
 	Enemy(Scene *scene, float x, float y);
 	void update();
+	void fire();
 };
 
 #endif

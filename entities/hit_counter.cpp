@@ -4,8 +4,8 @@
 #define X_COORD 16
 #define Y_COORD 48
 
-HitCounter::HitCounter(Scene *scene, std::string font, SDL_Color color)
-: Entity(scene), hit_count(0) {
+HitCounter::HitCounter(Scene *scene, std::string font, SDL_Color color, std::string label, int offset)
+: Entity(scene), hit_count(0), label(label), offset(offset) {
     this->font = font;
     this->color = color;
 }
@@ -29,7 +29,7 @@ void HitCounter::render() {
     SDL_Texture *text_texture = NULL;
     int texture_width, texture_height;
     
-    std::string text = "Hit Counter: " + std::to_string(hit_count);
+    std::string text = label + std::to_string(hit_count);
 
     scene->get_graphics()->get_font_renderer()->load_font_texture(
         &text_texture, font, text, color);
@@ -37,7 +37,7 @@ void HitCounter::render() {
 
     SDL_Rect dst = {
         X_COORD,
-        Y_COORD,
+        offset,
         texture_width,
         texture_height
     };
